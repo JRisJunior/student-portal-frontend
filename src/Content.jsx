@@ -1,6 +1,7 @@
 import { StudentShow } from "./StudentShow";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { Login } from "./Login";
 
 export function Content() {
   const [currentStudent, setCurrentStudent] = useState({});
@@ -15,7 +16,6 @@ export function Content() {
     <div>
       <Routes>
         <Route path="/" element={<StudentShow student={currentStudent} />} />
-        <Route path="/students/:id" element={<StudentShow />} />
       </Routes>
     </div>
   );
