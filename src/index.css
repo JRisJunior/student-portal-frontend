@@ -1,3 +1,18 @@
 html {
   scroll-behavior: smooth;
 }
+
+input[type="email"] {
+  width: 15%;
+}
+
+input[type="password"] {
+  width: 15%;
+} 
+
+label {
+  display: inline-block;
+  clear: left;
+  width: 65px;
+  text-align: right;
+}

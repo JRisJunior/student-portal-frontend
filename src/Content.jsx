@@ -10,7 +10,7 @@ export function Content() {
   const handleStudentShow = (student) => {
     console.log("handleStudentShow", student);
     setCurrentStudent(student);
-  }
+  };
 
   return (
     <div>

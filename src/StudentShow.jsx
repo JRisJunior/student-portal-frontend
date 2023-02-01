@@ -8,7 +8,7 @@ export function StudentShow(props) {
 
   const getStudent = () => {
     console.log(student.id);
-    axios.get("http://localhost:3000/students/.json").then(response => {
+    axios.get("http://localhost:3000/students/1.json").then(response => {
       console.log(response.data);
       setStudent(response.data);
     });
