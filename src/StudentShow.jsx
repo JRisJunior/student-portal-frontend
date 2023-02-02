@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 export function StudentShow(props) {
   const [student, setStudent] = useState({});
   const [experiences, setExperiences] = useState({});
+  const [capstone, setCapstone] = useState({});
   const params = useParams();
 
   const getStudent = () => {
@@ -25,9 +26,20 @@ export function StudentShow(props) {
     });
   };
 
-  [0]["student_id"]
+  const getCapstone = () => {
+    axios.get("http://localhost:3000/capstones").then(response => {
+      console.log(response.data);
+      for (let i = 0; i < response.data.length; i++) {
+        if (response.data[i]["student_id"] === student.id) {
+          setCapstone(response.data[i]);
+        }
+      }
+    });
+  };
+
   useEffect(getStudent, []);
   useEffect(getExperiences, []);
+  useEffect(getCapstone, []);
 
   return (
     <div>
@@ -45,14 +57,19 @@ export function StudentShow(props) {
       <p>Photo: {student.photo_url}</p>
       <hr />
       <h3>Experience</h3>
-      <p>Job Title: {} </p>
-      <p>Company: {} </p>
+      <p>Job Title: {experiences.title} </p>
+      <p>Company: {experiences.company} </p>
 
       <hr />
       <h3>Education</h3>
       <hr />
       <h3>Skills</h3>
-      <p></p>
+      <hr />
+      <h3>Capstone</h3>
+      <p>Name: {capstone.name}</p>
+      <p>Description: {capstone.description}</p>
+      <p>Link: {capstone.url}</p>
+
     </div>
   );
 }
