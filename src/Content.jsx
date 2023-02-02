@@ -1,7 +1,10 @@
 import {  UpdateStudent } from "./UpdateStudent";
 import {  UpdateExperience } from "./UpdateExperience";
 import axios from "axios";
-import { useState } from "react";
+import { StudentShow } from "./StudentShow";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Login } from "./Login";
 import { Modal } from "./Modal";
 import { UpdateEducation } from "./UpdateEducation";
 import { UpdateSkill } from "./UpdateSkill";
@@ -14,6 +17,13 @@ export function Content() {
   const [isSkillUpdateVisible, setIsSkillUpdateVisible] = useState(false);
   const [isCapstoneUpdateVisible, setIsCapstoneUpdateVisible] = useState(false);
   
+  const [currentStudent, setCurrentStudent] = useState({});
+
+
+  const handleStudentShow = (student) => {
+    console.log("handleStudentShow", student);
+    setCurrentStudent(student);
+  };
   
   const handleUpdateStudent = ( params) => {
     setIsStudentUpdateVisible(true);
@@ -62,6 +72,11 @@ export function Content() {
   
   return (
     <div>
+      <div>
+        <Routes>
+          <Route path="/" element={<StudentShow student={currentStudent} />} />
+        </Routes>
+      </div>
       <hr/>
       <button onClick={handleUpdateStudent}>Update Student</button>      
       <button onClick={handleUpdateExperience}>Update Experience</button>      
