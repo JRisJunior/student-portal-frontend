@@ -10,6 +10,7 @@ export function StudentShow(props) {
 
   const getStudent = () => {
     axios.get("http://localhost:3000/students/current").then(response => {
+      console.log("STUDENT");
       console.log(response.data);
       setStudent(response.data);
     });
@@ -17,6 +18,7 @@ export function StudentShow(props) {
 
   const getExperiences = () => {
     axios.get("http://localhost:3000/experiences").then(response => {
+      console.log("EXPERIENCES");
       console.log(response.data);
       for (let i = 0; i < response.data.length; i++) {
         if (response.data[i]["student_id"] === student.id) {
@@ -28,7 +30,8 @@ export function StudentShow(props) {
 
   const getCapstone = () => {
     axios.get("http://localhost:3000/capstones").then(response => {
-      console.log(response.data);
+      console.log("CAPSTONES");
+      console.log(response.data)
       for (let i = 0; i < response.data.length; i++) {
         if (response.data[i]["student_id"] === student.id) {
           setCapstone(response.data[i]);
