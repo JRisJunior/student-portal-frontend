@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 export function Header() {
   return (
     <header>
-      <div className="container">
+      {/* <div className="container">
         <img
           src="https://acltc-blog-pics.s3.amazonaws.com/uploads/blog_pic/blog_pic/24/ActualizeFinalwhiteBgLogo.png"
           alt="logo"
-          class="logo"
+          className="logo"
         />
         <nav>
           <ul>
-            <li class="login">
+            <li className="login">
               <Link to="login">Login</Link>
             </li>
           </ul>
         </nav>
-      </div>
+      </div> */}
+      <a href="/">Home</a> | <Link to="/update"> UPDATE Student</Link> |
     </header>
   );
 }
