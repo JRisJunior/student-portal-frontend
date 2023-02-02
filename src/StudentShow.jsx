@@ -16,16 +16,18 @@ export function StudentShow(props) {
 
   const getExperiences = () => {
     axios.get("http://localhost:3000/experiences").then(response => {
-      console.log(response.data[0]["student_id"]);
-      setExperiences(response.data);
+      console.log(response.data);
+      for (let i = 0; i < response.data.length; i++) {
+        if (response.data[i]["student_id"] === student.id) {
+          setExperiences(response.data[i]);
+        }
+      }
     });
   };
 
+  [0]["student_id"]
   useEffect(getStudent, []);
   useEffect(getExperiences, []);
- 
- 
-
 
   return (
     <div>
@@ -43,8 +45,8 @@ export function StudentShow(props) {
       <p>Photo: {student.photo_url}</p>
       <hr />
       <h3>Experience</h3>
-      <p>Job Title: </p>
-      <p>Company: </p>
+      <p>Job Title: {} </p>
+      <p>Company: {} </p>
 
       <hr />
       <h3>Education</h3>
