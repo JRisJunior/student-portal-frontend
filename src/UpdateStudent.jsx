@@ -38,7 +38,7 @@ export function UpdateStudent(props) {
         Github URL: <input  name="github_url" type="text" />
       </div>
       <div>
-        Photo URL: <input  name="phote_url" type="text" />
+        Photo URL: <input  name="photo_url" type="text" />
       </div>
  
       <button type="submit">Update</button>
