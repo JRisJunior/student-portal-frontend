@@ -4,17 +4,28 @@ import { useParams } from 'react-router-dom';
 
 export function StudentShow(props) {
   const [student, setStudent] = useState({});
+  const [experiences, setExperiences] = useState({});
   const params = useParams();
 
   const getStudent = () => {
-    console.log(student.id);
     axios.get("http://localhost:3000/students/current").then(response => {
       console.log(response.data);
       setStudent(response.data);
     });
   };
 
+  const getExperiences = () => {
+    axios.get("http://localhost:3000/experiences").then(response => {
+      console.log(response.data[0]["student_id"]);
+      setExperiences(response.data);
+    });
+  };
+
   useEffect(getStudent, []);
+  useEffect(getExperiences, []);
+ 
+ 
+
 
   return (
     <div>
@@ -32,13 +43,14 @@ export function StudentShow(props) {
       <p>Photo: {student.photo_url}</p>
       <hr />
       <h3>Experience</h3>
-      <p>Job Title: {}</p>
-      <p>Company: {}</p>
+      <p>Job Title: </p>
+      <p>Company: </p>
 
       <hr />
       <h3>Education</h3>
       <hr />
       <h3>Skills</h3>
+      <p></p>
     </div>
   );
 }
